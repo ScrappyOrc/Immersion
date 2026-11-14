@@ -181,8 +181,7 @@ local function BuildGeneral(category, layout)
 		L['Left click is used to handle text.'],
 		L['Right click is used to accept/hand in quests.'])):AddModifyPredicate(noConsolePort)
 	Checkbox(category, 'immersivemode', L['Immersive mode'],
-		L['Use your primary mouse button to read through text, accept/turn in quests and select the best available gossip option.'])
-		:AddModifyPredicate(noConsolePort)
+		L['Use your primary mouse button or gamepad accept button to read through text, accept/turn in quests and select the best available gossip option.'])
 
 	Header(layout, L['Hide interface'])
 	DependsOn(Checkbox(category, 'hideui', L['Hide interface'], L['Hide my user interface when interacting with an NPC.']),

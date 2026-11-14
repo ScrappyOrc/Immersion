@@ -146,6 +146,21 @@ function NPC:ClearImmersionFocus()
 end
 
 ---------------------------------------------------------
+-- Immersive mode: the accept button reads through the text first, then
+-- falls through to the regular gamepad behavior once the text is finished.
+local function ImmersiveAdvance(self)
+	if not L('immersivemode') or self.isInspecting or self:IsModifierDown() then
+		return false
+	end
+	local text = self.TalkBox.TextFrame.Text
+	if text:GetNumRemaining() > 1 and text:IsSequence() then
+		text:ForceNext()
+		return true
+	end
+	return false
+end
+
+---------------------------------------------------------
 local ControllerInput = { -- return true when propagating
 ---------------------------------------------------------
 	['UP'] = function(self)
@@ -201,6 +216,7 @@ local ControllerInput = { -- return true when propagating
 		end
 	end;
 	['CROSS'] = function(self)
+		if ImmersiveAdvance(self) then return end
 		-- Gossip/multiple quest choices
 		if self.TitleButtons:GetMaxIndex() > 0 then
 			self.TitleButtons:ClickFocused()
