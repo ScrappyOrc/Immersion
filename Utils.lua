@@ -60,9 +60,6 @@ L.UIHider:Hide()
 function L.HideFrame(frame)
 	frame:UnregisterAllEvents()
 	frame:SetParent(L.UIHider)
-	if UIPanelWindows then
-		UIPanelWindows[frame:GetName()] = nil;
-	end
 end
 
 function L.SetGradient(texture, orientation, ...)
