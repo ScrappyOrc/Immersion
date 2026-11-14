@@ -166,29 +166,21 @@ local ControllerInput = { -- return true when propagating
 	['UP'] = function(self)
 		if self.TitleButtons:IsVisible() then
 			self.TitleButtons:SetPrevious()
-		else
-			return true
 		end
 	end;
 	['DOWN'] = function(self)
 		if self.TitleButtons:IsVisible() then
 			self.TitleButtons:SetNext()
-		else
-			return true
 		end
 	end;
 	['LEFT'] = function(self)
 		if self.isInspecting then
 			self.Inspector:SetPrevious()
-		else
-			return true
 		end
 	end;
 	['RIGHT'] = function(self)
 		if self.isInspecting then
 			self.Inspector:SetNext()
-		else
-			return true
 		end
 	end;
 	['SQUARE'] = function(self)
