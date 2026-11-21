@@ -55,11 +55,14 @@ function L.Mixin(object, ...)
 	return object
 end
 
-L.UIHider = CreateFrame('Frame', _ .. 'UIHider')
-L.UIHider:Hide()
 function L.HideFrame(frame)
+	if not frame then return end
 	frame:UnregisterAllEvents()
-	frame:SetParent(L.UIHider)
+	frame:SetAlpha(0)
+	frame:EnableMouse(false)
+	if frame.EnableGamePadButton then
+		frame:EnableGamePadButton(false)
+	end
 end
 
 function L.SetGradient(texture, orientation, ...)
